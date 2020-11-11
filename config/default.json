@@ -1,0 +1,6 @@
+{
+  "port": 5000,
+  "jwtSecret": "hackaton2020cepu",
+  "mongoUri": "mongodb+srv://eva07:My-life-with-him@cluster0.ooqnv.mongodb.net/hackaton2020?retryWrites=true&w=majority",
+  "baseUrl": "http://localhost:5000"
+}
