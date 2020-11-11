@@ -1,44 +1,69 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {useHttp} from '../hooks/http.hook'
+import {useMessage} from '../hooks/message.hook'
+// import {AuthContext} from '../context/AuthContext'
+
 
 export const CreatePage = () => {
-    // const [category, setCategory] = useState([]);
-    const {loading, request} = useHttp();
+    const message = useMessage()
+    const {loading, request, error, clearError} = useHttp();
     const [form, setForm] = useState({
         category: ''
-    })
-    // const fetchToCategory = useCallback(async()=>{
-    //     try {
-    //         const fetched = await request('/api/category', 'GET', null, {})
-    //         setCategory(fetched)
-    //     }
-    //         catch (e) {}
-    // },[request]);
-    //
-    // useEffect(() => {
-    //     fetchToCategory()
-    // }, [fetchToCategory])
+    });
+    useEffect(() => {
+        message(error);
+        clearError();
+    }, [error, message, clearError])
+
+    useEffect(() => {
+        window.M.updateTextFields()
+    }, [])
+
 
     const changeHandler = event => {
-        setForm({ ...form, [event.target.name]: event.target.value })
-    }
+        setForm({...form, [event.target.name]: event.target.value})
+    };
 
     const addCategoryHandler = async () => {
         try {
-            const data = await request('/api/category/add-category', 'POST', {...form})
-        } catch (e) {}
-    }
+            const data = await request('/api/category/add-category', 'POST', {...form});
+            message(data.message)
+        } catch (e) {
+        }
+    };
 
-    return(
-        <div>
-            {category.map((category, index) => {
-                return(
-                    <tr key={category._id}>
-                        <td>{index + 1}</td>
-                        <td>{category.name}</td>
-                    </tr>
-                )
-            }) }
+    return (
+        <div className="row">
+            <div className="col s6 offset-s3">
+                <div className="card blue darken-1">
+                    <div className="card-content white-text">
+                        <span className="card-title">Добавить категорию</span>
+                        <div>
+                            <div className="input-field">
+                                <input
+                                    placeholder="Категория"
+                                    id="category"
+                                    type="text"
+                                    name="category"
+                                    className="yellow-input"
+                                    disabled={loading}
+                                    onChange={changeHandler}
+                                />
+                                <label htmlFor="category">Категория</label>
+                            </div>
+                        </div>
+                        <div className="card-action">
+                            <button
+                                className="btn yellow darken-4"
+                                style={{marginRight: 20}}
+                                onClick={addCategoryHandler}
+                            >
+                                Добавить
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 };
