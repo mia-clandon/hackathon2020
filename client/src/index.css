@@ -17,3 +17,49 @@ input.yellow-inputLfocus{
     border-bottom: 1px solid #ffeb3b!important;
     box-shadow: 0 1px 0 0 #ffeb3b!important;
 }
+.logo-link_navbar{
+    box-shadow: 2px 2px 5px 5px lightgray;
+}
+
+.logo-navbar{
+    height: 70px;
+    width: 80px;
+}
+.link_navbar{
+    color: #FFB33B;
+    font-size: 2em;
+}
+.img_content-about{
+    width: 400px;
+}
+.contentAbout{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 150px;
+}
+.contentAbout p{
+    text-align: center;
+    font-size: 24px;
+}
+.contentInfoAbout {
+    margin-top: 200px;
+}
+.contentInfoAbout h4{
+    text-align: center;
+}
+.contentCardsInfoAbout{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-left: 50px;
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+.row{
+    padding: 0;
+}
+.inner_card{
+    border: 1px solid orange;
+}
+

@@ -1,7 +1,7 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react';
-import {useHttp} from '../hooks/http.hook'
-import {useMessage} from '../hooks/message.hook'
-// import {AuthContext} from '../context/AuthContext'
+import {useHttp} from '../../hooks/admin/http.hook'
+import {useMessage} from '../../hooks/admin/message.hook'
+import {UnderCategory} from "../../components/admin/UnderCategory/UnderCategory";
 
 
 export const CreatePage = () => {
@@ -50,6 +50,8 @@ export const CreatePage = () => {
                                     onChange={changeHandler}
                                 />
                                 <label htmlFor="category">Категория</label>
+                            </div>
+                            <div className="input-field">
                             </div>
                         </div>
                         <div className="card-action">

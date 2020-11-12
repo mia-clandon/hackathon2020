@@ -1,15 +1,16 @@
 const {Router} = require('express')
 const router = Router()
-const Category = require("../models/Category");
+const Category = require("../../models/admin/Category");
+const UnderCategory = require("../../models/admin/UnderCategory");
 
 router.get('/', async (req, res) => {
-    try{
-    await Category.find({}).then(categories => {
-        res.json(categories)
-        console.log("Данные", categories)
-    })}
-    catch (e) {
-        res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+    try {
+        await Category.find({}).then(categories => {
+            res.json(categories)
+            console.log("Данные", categories)
+        })
+    } catch (e) {
+        res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
     }
 });
 router.post(
@@ -18,19 +19,43 @@ router.post(
         try {
             const {category} = req.body;
 
-            const candidate = await Category.findOne({ category })
+            const candidate = await Category.findOne({category})
 
             if (candidate) {
-                return res.status(400).json({ message: 'Такая категория уже существует' })
+                return res.status(400).json({message: 'Такая категория уже существует'})
             }
-            const item = new Category({ category })
+            const item = new Category({category})
 
             await item.save()
 
-            res.status(201).json({ message: 'Категория создана' })
+            res.status(201).json({message: 'Категория создана'})
 
         } catch (e) {
-            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+            res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
         }
-    })
+    });
+
+router.post(
+    '/add-under_category',
+    async (req, res) => {
+        try {
+            const {category, under_category} = req.body;
+
+            const underCategory = await UnderCategory.findOne({under_category})
+
+            if (underCategory) {
+                return res.status(400).json({message: 'Такая категория уже существует'})
+            }
+            const item = new UnderCategory({category, under_category});
+
+            await item.save()
+
+            res.status(201).json({message: 'Под категория создана создана'})
+
+        } catch (e) {
+            res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+            console.log(e.message)
+        }
+    });
+
 module.exports = router;

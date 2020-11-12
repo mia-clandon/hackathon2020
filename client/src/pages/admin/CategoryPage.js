@@ -1,5 +1,6 @@
 import React, {useEffect, useCallback, useState} from 'react';
-import {useHttp} from "../hooks/http.hook";
+import {useHttp} from "../../hooks/admin/http.hook";
+import {UnderCategory} from "../../components/admin/UnderCategory/UnderCategory";
 
 export const CategoryPage = () => {
     const [category, setCategory] = useState([]);

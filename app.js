@@ -6,11 +6,10 @@ const app = express();
 
 app.use(express.json({extended: true}));
 
-app.use('/api/auth', require('./routes/auth.routes'));
-app.use('/api/category', require('./routes/category.routes'));
+app.use('/api/auth', require('./routes/admin/auth.routes'));
+app.use('/api/category', require('./routes/admin/category.routes'));
 
 //api for admin area
-app.use('/api/admin/auth', require('./routes/admin/admin.auth.routes'));
 
 
 const PORT = config.get('port') || 5000
