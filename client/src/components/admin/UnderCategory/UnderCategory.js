@@ -7,7 +7,7 @@ export const UnderCategory = () => {
     const message = useMessage()
     const {loading, request, error, clearError} = useHttp();
     const [form, setForm] = useState({
-        category: '', under_category: ''
+        category: '', under_category: '', lesson: ''
     });
     useEffect(() => {
         message(error);
@@ -62,7 +62,7 @@ export const UnderCategory = () => {
             <div className="col s6 offset-s3">
                 <div className="card blue darken-1">
                     <div className="card-content white-text">
-                        <span className="card-title">Добавить подкатегорию</span>
+                        <span className="card-title">Добавить урок</span>
                         <div>
                             <ListSelectUnderCategory onChange={changeHandler}/>
                             <div className="input-field">
@@ -78,6 +78,15 @@ export const UnderCategory = () => {
                                 <label htmlFor="under_category">Подкатегория</label>
                             </div>
                             <div className="input-field">
+                                <textarea
+                                    placeholder="Урок"
+                                    id="lesson"
+                                    name="lesson"
+                                    className="yellow-input"
+                                    disabled={loading}
+                                    onChange={changeHandler}
+                                />
+                                <label htmlFor="under_category">Урок</label>
                             </div>
                         </div>
                         <div className="card-action">

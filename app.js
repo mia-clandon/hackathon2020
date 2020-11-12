@@ -8,6 +8,7 @@ app.use(express.json({extended: true}));
 
 app.use('/api/auth', require('./routes/admin/auth.routes'));
 app.use('/api/category', require('./routes/admin/category.routes'));
+app.use('/api/client/category', require('./routes/client/category.routes'));
 
 //api for admin area
 

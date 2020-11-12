@@ -5,6 +5,7 @@ import {CreatePage} from './pages/admin/CreatePage'
 import {DetailPage} from './pages/admin/DetailPage'
 import {AuthPage} from './pages/admin/AuthPage'
 import {UnderCategory} from "./components/admin/UnderCategory/UnderCategory";
+import {DetailCopyPage} from "./pages/client/DetailPage";
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated) {
@@ -31,7 +32,10 @@ export const useRoutes = isAuthenticated => {
                 <Route path="/admin-area" exact>
                     <AuthPage />
                 </Route>
-                <Redirect to="/" />
+                <Route path="/detail-lesson" exact>
+                    <DetailCopyPage />
+                </Route>
+                <Redirect to="/detail-lesson" />
             </Switch>
         )
     }

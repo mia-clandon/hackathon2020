@@ -1,12 +1,14 @@
-import React, {useEffect, useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {useHttp} from "../../hooks/admin/http.hook";
 
-export const CategoryPage = () => {
+
+export const DetailCopyPage = () => {
     const [category, setCategory] = useState([]);
     const {request} = useHttp();
     const fetchToCategory = useCallback(async()=>{
         try {
-            const fetched = await request('/api/category', 'GET', null, {})
+            const fetched = await request('/api/client/category', 'GET', null, {})
             setCategory(fetched)
         }
         catch (e) {}
@@ -22,10 +24,10 @@ export const CategoryPage = () => {
                 return(
                     <tr key={category._id}>
                         <td>{index + 1}</td>
-                        <td>{category.category}</td>
+                        <td>{category.under_category}</td>
                     </tr>
                 )
             }) }
-        </div>
+            </div>
     )
 };

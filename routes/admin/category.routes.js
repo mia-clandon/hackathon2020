@@ -39,18 +39,18 @@ router.post(
     '/add-under_category',
     async (req, res) => {
         try {
-            const {category, under_category} = req.body;
+            const {category, under_category, lesson} = req.body;
 
             const underCategory = await UnderCategory.findOne({under_category})
 
             if (underCategory) {
                 return res.status(400).json({message: 'Такая категория уже существует'})
             }
-            const item = new UnderCategory({category, under_category});
+            const item = new UnderCategory({category, under_category, lesson});
 
             await item.save()
 
-            res.status(201).json({message: 'Под категория создана создана'})
+            res.status(201).json({message: 'Урок создан  '})
 
         } catch (e) {
             res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})

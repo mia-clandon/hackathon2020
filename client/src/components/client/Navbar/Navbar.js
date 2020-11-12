@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
-import {Link, NavLink, useHistory} from 'react-router-dom';
+import {NavLink, useHistory} from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import {AuthContext} from "../../../context/admin/AuthContext";
 import logo from './images/logo.svg';
 
@@ -16,9 +17,9 @@ export const Navbar = () => {
                     WebSharm
                 </NavLink>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li><Link to="/#about" className="link_navbar">О нас</Link></li>
-                    <li><NavLink to="#course" className="link_navbar">Курсы</NavLink></li>
-                    <li><NavLink to="#reviews" className="link_navbar">Отзывы</NavLink></li>
+                    <li><Link to="#about" className="link_navbar">О нас</Link></li>
+                    <li><Link to="#course" className="link_navbar">Курсы</Link></li>
+                    <li><Link to="#reviews" className="link_navbar">Отзывы</Link></li>
                 </ul>
             </div>
         </nav>
