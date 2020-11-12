@@ -5,7 +5,7 @@ import {AuthContext} from "../../../context/admin/AuthContext";
 import logo from './images/logo.svg';
 
 
-export const Navbar = () => {
+export const NavbarClient = () => {
     const history = useHistory();
     const auth = useContext(AuthContext);
 
@@ -19,7 +19,6 @@ export const Navbar = () => {
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <li><Link to="#about" className="link_navbar">О нас</Link></li>
                     <li><Link to="#course" className="link_navbar">Курсы</Link></li>
-                    <li><Link to="#reviews" className="link_navbar">Отзывы</Link></li>
                 </ul>
             </div>
         </nav>

@@ -3,7 +3,8 @@ import {DetailCopyPage} from "../../../pages/client/DetailPage";
 
 
 export const ContentProgramCourse = () => {
-    const [open, setOpen] = React.useState(false);
+    const [showResults, setShowResults] = React.useState(false);
+    const onClick = () => setShowResults(true);
 
     return (
         <div className="contentInfoAbout">
@@ -49,15 +50,8 @@ export const ContentProgramCourse = () => {
                                 <p>Проходя данный курс вы ознакомитесь с основными инструментами frontend-разработки: HTML, CSS и JavaScript</p>
                             </div>
                             <div className="card-action">
-                                <a href="#"><DetailCopyPage className={open ? "open" : null}>
-                                    <button
-                                        onClick={() => {
-                                            setOpen(!open);
-                                        }}
-                                    >
-                                    </button>
-                                    <ul>{/* elements */}</ul>
-                                </DetailCopyPage></a>
+                                <input type="submit" value="Изучить" onClick={onClick} />
+                                { showResults ? <DetailCopyPage /> : null }
                             </div>
                         </div>
                     </div>

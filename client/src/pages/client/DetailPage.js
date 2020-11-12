@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {useHttp} from "../../hooks/admin/http.hook";
+import 'materialize-css';
 
 
 export const DetailCopyPage = () => {
@@ -19,13 +20,17 @@ export const DetailCopyPage = () => {
     }, [fetchToCategory])
 
     return(
-        <div>
+        <div className="contentCardsInnerCourse">
             {category.map((category, index) => {
                 return(
-                    <tr key={category._id}>
-                        <td>{index + 1}</td>
-                        <td>{category.under_category}</td>
-                    </tr>
+            <div className="card" key={category._id}>
+                <div className="card-content">
+                    <p>{category.under_category}</p>
+                </div>
+                <div className="card-content grey lighten-4">
+                    <div id="test4">{category.lesson}</div>
+                </div>
+            </div>
                 )
             }) }
             </div>
